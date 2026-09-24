@@ -159,6 +159,28 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const siteNav = document.querySelector('.site-nav');
+
+if (navToggle && siteNav) {
+  navToggle.addEventListener('click', function () {
+    siteNav.classList.toggle('nav-open');
+    navToggle.classList.toggle('nav-toggle-open');
+  });
+
+  // Close menu when a nav link is clicked (mobile UX)
+  siteNav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      siteNav.classList.remove('nav-open');
+      navToggle.classList.remove('nav-toggle-open');
+    });
+  });
+}
+</script>
 </body>
 </html>
